@@ -1,10 +1,12 @@
 from django.core.management.base import BaseCommand
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from payments.models import Customer
 from payments.settings import TRIAL_PERIOD_FOR_USER_CALLBACK
 from payments.settings import DEFAULT_PLAN
+
+User = get_user_model()
 
 
 class Command(BaseCommand):
