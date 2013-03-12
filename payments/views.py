@@ -12,6 +12,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 
 import stripe
+from django.views.generic import TemplateView
 
 from payments.forms import PlanForm
 from payments.models import Event, EventProcessingException, CurrentSubscription
@@ -134,3 +135,9 @@ def webhook(request):
         event.validate()
         event.process()
     return HttpResponse()
+
+class PlanView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super(PlanView, self).get_context_data(**kwargs)
+        context.update({"form": PlanForm})
+        return context
