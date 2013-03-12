@@ -18,10 +18,12 @@ urlpatterns = patterns(
     
     url(
         r"^subscribe/$",
-        login_required(TemplateView.as_view(template_name="payments/subscribe.html")),
-        {
-            "extra_context": {"form": PlanForm}
-        },
+        login_required(
+            TemplateView.as_view(
+                template_name="payments/subscribe.html",
+                {"extra_context": {"form": PlanForm}}
+            )
+        ),
         name="payments_subscribe"
     ),
     url(
@@ -31,10 +33,12 @@ urlpatterns = patterns(
     ),
     url(
         r"^change/plan/$",
-        login_required(TemplateView.as_view(template_name="payments/change_plan.html")),
-        {
-            "extra_context": {"form": PlanForm}
-        },
+        login_required(
+            TemplateView.as_view(
+                template_name="payments/change_plan.html",
+                {"extra_context": {"form": PlanForm}}
+            )
+        ),
         name="payments_change_plan"
     ),
     url(
